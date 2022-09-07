@@ -4,8 +4,8 @@ import { NavLink } from "react-router-dom";
 
 export default function Sidebar() {
   return (
-    <div className="drawer w-72">
-      <ul className="menu  overflow-y-auto bg-indigo-400 min-h-full relative text-white ">
+    <div className="drawer w-72 h-screen">
+      <ul className="menu overflow-y-auto bg-indigo-400 min-h-full relative text-white ">
         {/* <!-- Sidebar content here --> */}
         <div className="avatar placeholder flex-col justify-center items-center w-full px-7 py-8 border-b-2 border-y-gray-500 text-center font-bold box-border">
           {/* avatar */}

@@ -11,7 +11,7 @@ export default function Signup() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(email, password, displayName, thumbnail);
+    signup(email, password, displayName, thumbnail);
   };
 
   const handleFileChange = (e) => {
@@ -68,6 +68,14 @@ export default function Signup() {
               value={password}
               className="block text-sm py-3 px-4 rounded-lg w-full border outline-none"
             />
+            <input
+              required
+              type="text"
+              placeholder="Display Name"
+              onChange={(e) => setDisplayName(e.target.value)}
+              value={displayName}
+              className="block text-sm py-3 px-4 rounded-lg w-full border outline-none"
+            />
           </div>
           {/* file upload */}
           <div className="flex items-center justify-center bg-grey-lighter">
@@ -91,10 +99,12 @@ export default function Signup() {
               />
             </label>
           </div>
+          {/* fileName */}
+          {thumbnail && <p className="mt-4 ml-28">{thumbnail.name}</p>}
 
           {/* uploaded */}
           {thumbnail && (
-            <div className="alert alert-success shadow-lg mt-4">
+            <div className="alert alert-success shadow-lg mt-4 justify-center">
               <div>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -116,7 +126,7 @@ export default function Signup() {
 
           {/* error */}
           {thumbnailError && (
-            <div className="alert alert-error shadow-lg mt-4">
+            <div className="alert alert-error shadow-lg mt-4 justify-center">
               <div>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -146,13 +156,18 @@ export default function Signup() {
           )}
 
           {isPending && (
-            <button className="py-3 w-64 text-xl text-white bg-purple-400 rounded-2xl">
-              Loading...
-            </button>
+            <div className="text-center mt-6">
+              <button
+                className="btn-outline py-3 w-64 text-xl text-white bg-purple-400 rounded-2xl"
+                disabled
+              >
+                Loading...
+              </button>
+            </div>
           )}
 
           {error && (
-            <div className="alert alert-error shadow-lg mt-4">
+            <div className="alert alert-error shadow-lg mt-4 justify-center">
               <div>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

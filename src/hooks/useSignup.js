@@ -1,5 +1,11 @@
 import { useState } from "react";
-import { auth } from "../firebase/config";
+import { auth, fbstorage } from "../firebase/config";
+import {
+  ref,
+  getDownloadURL,
+  uploadBytesResumable,
+  uploadBytes,
+} from "firebase/storage";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useAuthContext } from "./useAuthContext";
 
@@ -8,7 +14,7 @@ export const useSignup = () => {
   const [isPending, setisPending] = useState(false);
   const { dispatch } = useAuthContext();
 
-  const signup = async (email, password, displayName) => {
+  const signup = async (email, password, displayName, thumbnail) => {
     setError(null);
     setisPending(true);
 
@@ -20,9 +26,19 @@ export const useSignup = () => {
         password
       );
 
-      //   add display name to user
+      // file reference
+      const uploadRef = ref(
+        fbstorage,
+        `thumbnails/${user.uid}/${thumbnail.name}`
+      );
+      const imageRef = await uploadBytes(uploadRef, thumbnail);
+      // get the file url from Firebase stoprage
+      const image = await getDownloadURL(imageRef.ref);
+
+      //  add display name to user
       await updateProfile(user, {
         displayName,
+        photoURL: image,
       });
 
       // dispatch login action
