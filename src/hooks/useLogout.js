@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { auth, db } from "../firebase/config";
 import { signOut } from "firebase/auth";
 import { useAuthContext } from "./useAuthContext";
-import { doc, setDoc, updateDoc } from "firebase/firestore";
+import { doc, updateDoc } from "firebase/firestore";
 
 export const useLogout = () => {
   const [isCancelled, setIsCancelled] = useState(false);
@@ -23,7 +23,6 @@ export const useLogout = () => {
 
       // logging out
       await signOut(auth);
-      setisPending(false);
 
       // dispatching logout
       dispatch({ type: "LOGOUT" });
@@ -32,6 +31,7 @@ export const useLogout = () => {
         setisPending(false);
         setError(null);
       }
+      setisPending(false);
     } catch (error) {
       if (!isCancelled) {
         setError(error.message);
