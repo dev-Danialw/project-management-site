@@ -1,7 +1,10 @@
 import Temple from "../assets/temple.svg";
 import { Link } from "react-router-dom";
+import { useLogout } from "../hooks/useLogout";
 
 export default function Nav() {
+  const { logout, isPending } = useLogout();
+
   return (
     <div className="navbar mb-20 px-0">
       <div className="flex-1">
@@ -18,7 +21,16 @@ export default function Nav() {
           <li className="mr-5">
             <Link to="/signup">Signup</Link>
           </li>
-          <button className="btn btn-outline">Logout</button>
+          {!isPending && (
+            <button className="btn btn-outline" onClick={logout}>
+              Logout
+            </button>
+          )}
+          {isPending && (
+            <button className="btn btn-outline" disabled>
+              Logging out...
+            </button>
+          )}
         </ul>
       </div>
     </div>

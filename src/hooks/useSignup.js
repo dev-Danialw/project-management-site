@@ -1,14 +1,9 @@
 import { useState } from "react";
 import { auth, db, fbstorage } from "../firebase/config";
-import {
-  ref,
-  getDownloadURL,
-  uploadBytesResumable,
-  uploadBytes,
-} from "firebase/storage";
+import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useAuthContext } from "./useAuthContext";
-import { addDoc, collection, doc, setDoc } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
 
 export const useSignup = () => {
   const [error, setError] = useState(null);
