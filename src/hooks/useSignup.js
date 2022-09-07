@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { auth, fbstorage } from "../firebase/config";
+import { auth, db, fbstorage } from "../firebase/config";
 import {
   ref,
   getDownloadURL,
@@ -8,6 +8,7 @@ import {
 } from "firebase/storage";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useAuthContext } from "./useAuthContext";
+import { addDoc, collection, doc, setDoc } from "firebase/firestore";
 
 export const useSignup = () => {
   const [error, setError] = useState(null);
@@ -35,8 +36,15 @@ export const useSignup = () => {
       // get the file url from Firebase stoprage
       const image = await getDownloadURL(imageRef.ref);
 
-      //  add display name to user
+      //  add display name & photo to user
       await updateProfile(user, {
+        displayName,
+        photoURL: image,
+      });
+
+      // ceate user document
+      await setDoc(doc(db, "users", user.uid), {
+        online: true,
         displayName,
         photoURL: image,
       });
