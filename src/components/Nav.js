@@ -1,9 +1,11 @@
 import Temple from "../assets/temple.svg";
 import { Link } from "react-router-dom";
 import { useLogout } from "../hooks/useLogout";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 export default function Nav() {
   const { logout, isPending } = useLogout();
+  const { user } = useAuthContext();
 
   return (
     <div className="navbar mb-20 px-0">
@@ -15,21 +17,31 @@ export default function Nav() {
       </div>
       <div className="flex-none">
         <ul className="menu menu-horizontal p-1">
-          <li className="mr-5">
-            <Link to="/login">Login</Link>
-          </li>
-          <li className="mr-5">
-            <Link to="/signup">Signup</Link>
-          </li>
-          {!isPending && (
-            <button className="btn btn-outline" onClick={logout}>
-              Logout
-            </button>
+          {!user && (
+            <>
+              <li className="mr-5">
+                <Link to="/login">Login</Link>
+              </li>
+              <li className="mr-5">
+                <Link to="/signup">Signup</Link>
+              </li>
+            </>
           )}
-          {isPending && (
-            <button className="btn btn-outline" disabled>
-              Logging out...
-            </button>
+
+          {user && (
+            <li>
+              {!isPending && (
+                <button className="btn btn-outline" onClick={logout}>
+                  Logout
+                </button>
+              )}
+
+              {isPending && (
+                <button className="btn btn-outline" disabled>
+                  Logging out...
+                </button>
+              )}
+            </li>
           )}
         </ul>
       </div>
