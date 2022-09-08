@@ -8,7 +8,7 @@ export default function Sidebar() {
   const { user } = useAuthContext();
 
   return (
-    <div className="drawer w-72  h-screen">
+    <div className="w-72  h-screen">
       <ul className="menu overflow-y-auto bg-indigo-400 min-h-full relative text-white ">
         {/* <!-- Sidebar content here --> */}
         {/* avatar */}
@@ -18,23 +18,25 @@ export default function Sidebar() {
         </div>
 
         {/* Links */}
+        {/* dashboard btn */}
         <ul className="menu menu-vertical p-1 mt-12 pl-5 pr-0 w-full">
-          <li className="glass rounded-l-3xl rounded-r-none">
-            <NavLink exact="true" to="/">
-              <div className="flex flex-row gap-4">
+          <NavLink exact="true" to="/">
+            <button className="btn btn-outline glass  rounded-l-3xl rounded-r-none pr-36 w-full">
+              <div className="flex flex-row gap-4 items-center">
                 <img src={DashboardIcon} alt="dashboard icon" />
                 <span>Dashboard</span>
               </div>
-            </NavLink>
-          </li>
-          <li className="glass mt-3 rounded-l-3xl rounded-r-none">
-            <NavLink to="/create" className="font-bold">
-              <div className="flex flex-row gap-4">
+            </button>
+          </NavLink>
+          {/* create project btn */}
+          <NavLink exact="true" to="/create">
+            <button className="btn btn-outline glass mt-3 rounded-l-3xl rounded-r-none pr-28 w-full">
+              <div className="flex flex-row gap-4 items-center">
                 <img src={AddIcon} alt="add icon" />
                 <span>New Project</span>
               </div>
-            </NavLink>
-          </li>
+            </button>
+          </NavLink>
         </ul>
       </ul>
     </div>

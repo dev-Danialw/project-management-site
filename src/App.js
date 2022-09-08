@@ -19,7 +19,7 @@ const App = () => {
       {authIsReady && (
         <BrowserRouter>
           {user && <Sidebar />}
-          <div className="flex-grow pt-0 px-8 bg-slate-50">
+          <div className="flex-grow pt-0 px-8 bg-slate-50 h-screen">
             <Nav />
             <Routes>
               <Route
