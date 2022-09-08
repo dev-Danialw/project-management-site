@@ -9,6 +9,7 @@ import Signup from "./pages/Signup";
 import Project from "./pages/Project";
 import Nav from "./components/Nav";
 import Sidebar from "./components/Sidebar";
+import OnlineUsers from "./components/OnlineUsers";
 
 const App = () => {
   const { user, authIsReady } = useAuthContext();
@@ -17,8 +18,8 @@ const App = () => {
     <div className="flex">
       {authIsReady && (
         <BrowserRouter>
-          <Sidebar />
-          <div className="flex-grow pt-0 px-14">
+          {user && <Sidebar />}
+          <div className="flex-grow pt-0 px-8 bg-slate-50">
             <Nav />
             <Routes>
               <Route
@@ -48,6 +49,7 @@ const App = () => {
               />
             </Routes>
           </div>
+          {user && <OnlineUsers />}
         </BrowserRouter>
       )}
     </div>
