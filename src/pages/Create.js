@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react";
-import { useCollection } from "../hooks/useCollection";
+
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
+
 import { timestamp } from "../firebase/config";
+import { useCollection } from "../hooks/useCollection";
 import { useAuthContext } from "../hooks/useAuthContext";
-// import { Navigate } from "react-router-dom";
+import { useFirestore } from "../hooks/useFirestore";
+import { useNavigate } from "react-router-dom";
 
 const animatedComponents = makeAnimated();
 const categories = [
@@ -15,8 +18,11 @@ const categories = [
 ];
 
 export default function Create() {
-  const { documents } = useCollection("users");
+  const navigate = useNavigate();
   const { user } = useAuthContext();
+  const { documents } = useCollection("users");
+  const { addDocument, response } = useFirestore("projects");
+
   const [users, setUsers] = useState([]);
 
   // form field values
@@ -38,7 +44,7 @@ export default function Create() {
     }
   }, [documents]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setFormError(null);
 
@@ -74,7 +80,11 @@ export default function Create() {
       dueDate: timestamp.fromDate(new Date(dueDate)),
     };
 
-    console.log(project);
+    // saving new project
+    await addDocument(project);
+    if (!response.error) {
+      navigate("/");
+    }
   };
 
   return (
