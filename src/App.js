@@ -34,7 +34,7 @@ const App = () => {
               />
               <Route
                 exact
-                path="/project"
+                path="/projects/:id"
                 element={user ? <Project /> : <Navigate to="/login" />}
               />
               <Route
