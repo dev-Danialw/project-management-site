@@ -7,7 +7,7 @@ export default function ProjectList({ projects }) {
       {projects.length === 0 && <p>No Projects yet!</p>}
       {projects.map((project) => (
         <Link to={`/projects/${project.id}`} key={project.id}>
-          <div className="card w-96 bg-base-100 shadow-xl">
+          <div className="card w-auto bg-base-100 shadow-xl">
             <div className="card-body pt-7 pb-1 px-5 ">
               <h4 className="card-title">{project.name}</h4>
               <p>Due by {project.dueDate.toDate().toDateString()}</p>

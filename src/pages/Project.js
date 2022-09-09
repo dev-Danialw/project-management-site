@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useDocument } from "../hooks/useDocument";
+import ProjectComments from "./ProjectComments";
 import ProjectSummary from "./ProjectSummary";
 
 export default function Project() {
@@ -15,8 +16,11 @@ export default function Project() {
   }
 
   return (
-    <div>
-      <ProjectSummary project={document} />
+    <div className="grid grid-cols-3 gap-6 ">
+      <div className="col-span-2">
+        <ProjectSummary project={document} />
+      </div>
+      <ProjectComments />
     </div>
   );
 }
