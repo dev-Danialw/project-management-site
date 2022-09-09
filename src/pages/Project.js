@@ -20,7 +20,9 @@ export default function Project() {
       <div className="col-span-2">
         <ProjectSummary project={document} />
       </div>
-      <ProjectComments project={document} />
+      <div className="col-span-1">
+        <ProjectComments project={document} />
+      </div>
     </div>
   );
 }
