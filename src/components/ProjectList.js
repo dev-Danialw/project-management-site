@@ -3,7 +3,7 @@ import Avatar from "./Avatar";
 
 export default function ProjectList({ projects }) {
   return (
-    <div className="inline-grid gap-8 grid-cols-3 ">
+    <div className="inline-grid gap-8 grid-cols-3 items-center">
       {projects.length === 0 && <p>No Projects yet!</p>}
       {projects.map((project) => (
         <Link to={`/projects/${project.id}`} key={project.id}>
