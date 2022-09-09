@@ -36,7 +36,7 @@ export const useCollection = (collectionName, collectionQuery) => {
     );
 
     return () => unsub();
-  }, [collectionName]);
+  }, [collectionName, collectionQuery]);
 
   return { documents, error };
 };

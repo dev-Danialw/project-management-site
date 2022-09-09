@@ -24,7 +24,7 @@ export const useDocument = (doc_collection, id) => {
       }
     );
     return () => unsub();
-  }, [doc_collection]);
+  }, [doc_collection, id]);
 
   return { document, error };
 };

@@ -188,11 +188,8 @@ export default function Signup() {
       </div>
     </form>
   );
-}
-
-{
-  /* <p className="mt-4 text-sm">
-Already Have An Account?{" "}
-<span className="underline cursor-pointer"> Sign In</span>
-</p>  */
+  //   <p className="mt-4 text-sm">
+  // Already Have An Account?{" "}
+  // <span className="underline cursor-pointer"> Sign In</span>
+  //  </p>
 }
