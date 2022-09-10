@@ -16,11 +16,11 @@ export default function Project() {
   }
 
   return (
-    <div className="grid grid-cols-3 gap-6 ">
+    <div className="grid md:grid-cols-3 gap-6 ">
       <div className="col-span-2">
         <ProjectSummary project={document} />
       </div>
-      <div className="col-span-1">
+      <div className="md:col-span-1 col-span-2">
         <ProjectComments project={document} />
       </div>
     </div>

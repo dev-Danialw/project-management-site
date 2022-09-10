@@ -5,7 +5,7 @@ export default function OnlineUsers() {
   const { error, documents } = useCollection("users");
 
   return (
-    <div className="flex flex-col items-center w-60 min-w-60 pt-6 box-border bg-white font-bold">
+    <div className="hidden sm:flex flex-col items-center w-60 min-w-60 pt-6 box-border bg-white font-bold">
       <h2 className="border-b-2 text-right w-44 pb-2 mb-2">All Users</h2>
       {documents &&
         documents.map((user) => {
@@ -13,7 +13,7 @@ export default function OnlineUsers() {
           return (
             <div key={user.id} className="stat flex items-center justify-end">
               <div className="stat-title">{user.displayName}</div>
-              <div className={`avatar ${onlineStatus}`}>
+              <div className={`avatar ${onlineStatus} pl-2`}>
                 <Avatar src={user.photoURL} />
               </div>
             </div>

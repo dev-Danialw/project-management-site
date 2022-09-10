@@ -8,8 +8,8 @@ export default function Nav() {
   const { user } = useAuthContext();
 
   return (
-    <div className="flex flex-row navbar mb-16 px-0 w-full">
-      <div className="flex-1">
+    <div className="flex flex-row navbar mb-2 sm:mb-16 px-4 sm:px-0 w-full">
+      <div className="flex flex-1 items-center ">
         <Link to="/" className="btn btn-ghost text-xl px-0 border-none">
           <img src={Temple} alt="logo" className="w-8 h-8" />
           <span className="px-2">Work Space</span>

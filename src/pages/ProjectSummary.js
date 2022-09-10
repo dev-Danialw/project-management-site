@@ -16,7 +16,7 @@ export default function ProjectSummary({ project }) {
   return (
     <>
       <div className="card w-auto bg-base-100 shadow-xl">
-        <div className="card-body pt-7 pb-1 px-5 ">
+        <div className="card-body pt-5 pb-1 px-5 ">
           <h4 className="card-title">{project.name}</h4>
           <p className="font-medium text-slate-400">
             By {project.createdBy.displayName}
@@ -33,7 +33,7 @@ export default function ProjectSummary({ project }) {
             </h4>
             <ul className="card-actions justify-start mt-2">
               {project.assignedUsersList.map((user) => (
-                <li key={user.photoURL}>
+                <li key={user.photoURL} className="pr-2">
                   <Avatar src={user.photoURL} />
                 </li>
               ))}

@@ -46,7 +46,7 @@ export default function ProjectComments({ project }) {
               <div className="card-body p-4 ">
                 <div className="avatar gap-2">
                   <Avatar src={comment.photoURL} />
-                  <h2 className="card-title">{comment.displayName}</h2>
+                  <h2 className="px-2 card-title">{comment.displayName}</h2>
                 </div>
                 <p className="text-sm text-gray-400">
                   {formatDistanceToNow(comment.createdAt.toDate(), {

@@ -15,11 +15,11 @@ const App = () => {
   const { user, authIsReady } = useAuthContext();
 
   return (
-    <div className="flex">
+    <div className="sm:flex">
       {authIsReady && (
         <BrowserRouter>
           {user && <Sidebar />}
-          <div className="flex-grow pt-0 px-8 bg-slate-50 h-screen">
+          <div className="flex flex-col flex-grow pt-0 px-4 sm:px-8 bg-slate-50 h-screen">
             <Nav />
             <Routes>
               <Route
